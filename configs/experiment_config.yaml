@@ -1,0 +1,47 @@
+data:
+  dataset: FD001
+  window_size: 30
+  stride: 1
+  test_split: 0.2
+  seed: 42
+
+  # sensors to drop for FD001 (zero variance under single operating condition)
+  drop_sensors_fd001: [1, 5, 6, 10, 16, 18, 19]
+
+  rul_cap: 125
+
+vae:
+  latent_dim: 8
+  hidden_dims: [64, 32]
+  lr: 0.001
+  n_epochs: 100
+  batch_size: 256
+  kl_annealing:
+    start_epoch: 0
+    end_epoch: 40
+    start_weight: 0.0001
+    end_weight: 1.0
+  beta: 0.5
+  free_bits: 0.1
+
+autoencoder:
+  latent_dim: 16
+  hidden_dims: [64, 32]
+  lr: 0.001
+  n_epochs: 80
+  batch_size: 256
+
+isolation_forest:
+  n_estimators: 200
+  contamination: 0.1
+  random_state: 42
+
+ocsvm:
+  kernel: rbf
+  nu: 0.1
+  gamma: scale
+
+evaluation:
+  anomaly_thresholds: [0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+  # fraction of engine life considered "degraded" for labeling
+  degradation_fraction: 0.5
