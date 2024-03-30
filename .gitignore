@@ -11,7 +11,7 @@ dist/
 build/
 .ruff_cache/
 scripts/
-models/
+/models/
 *.pt
 *.pth
 *.bin
