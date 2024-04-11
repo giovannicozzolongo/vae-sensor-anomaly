@@ -2,7 +2,7 @@
 
 ## Motivation
 
-I wanted a generative model in my portfolio and sensor anomaly detection felt like the right domain. Turbofan engine degradation is a textbook case for unsupervised anomaly detection: you have multivariate sensor readings, clear degradation patterns, and real consequences for missing them. The NASA C-MAPSS dataset gave me a controlled setup to compare a VAE against classical baselines (Isolation Forest, One-Class SVM, standard Autoencoder) on the same data.
+VAE trained only on healthy sensor data, then used reconstruction error to flag degradation in turbofan engines. Compared against Isolation Forest, One-Class SVM, and a standard Autoencoder on the NASA C-MAPSS dataset (run-to-failure simulations with known fault modes).
 
 ## Architecture
 
